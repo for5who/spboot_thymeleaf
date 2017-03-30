@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+     <head>
+		 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	     <title>Spring</title>
+	     
+	 	 <link rel="stylesheet" type="text/css" th:href="@{/css/framework.css}"/>
+		 <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.min.css}"/>
+		 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+		 <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.css}"/>
+		 
+		 <script lang="javascript" type="text/javascript" src="../js/jQuery/jquery-1.11.3.min.js"></script>
+		 <script lang="javascript" type="text/javascript" src="../js/jQuery/jquery-ui.min.js"></script>
+		 <script lang="javascript" type="text/javascript" src="../js/scripts/custom.js"></script>
+		 <script lang="javascript" type="text/javascript" src="../js/scripts/plugins.js"></script>
+     </head>
+
+	 <body>	
+		
+		 <form method="post" id="loginForm" name="loginForm"  action="#" th:action="@{login_check}" >
+		 <div class="content">    
+            <div class="decoration"></div>
+            <div class="page-login full-bottom">
+                <!-- <a href="#" class="page-login-logo"></a> -->
+                <div class="login-input">
+                    <i class="fa fa-user"></i>
+                    <input type="text" name="username" value="username" onfocus="if (this.value=='username') this.value = ''" onblur="if (this.value=='') this.value = 'username'"/>
+                </div>
+                <div class="login-password">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" name="password" value="password" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'"/>
+                </div>
+                <a href="#" class="login-forgot"><i class="fa fa-eye"></i>Forgot Credentials</a>
+                <a href="#" class="login-create">Create Account<i class="fa fa-user"></i></a>
+                <div class="clear"></div>
+                <a href="javascript:void(0)" onclick="loginAction()" class="login-button button button-small button-blue button-fullscreen full-bottom">Login</a>
+               <!--  <div class="decoration"></div>
+                <div class="clear"></div>
+                <a href="#" class="facebook-login facebook-color"><i class="fa fa-facebook"></i>Login with Facebook</a>
+                <a href="#" class="twitter-login twitter-color"><i class="fa fa-twitter"></i>Login with Twitter</a>
+                <a href="#" class="google-login google-color"><i class="fa fa-google-plus"></i>Login with Google</a> -->
+            </div>
+           <!--  <div class="decoration"></div> -->
+        </div>
+        
+	       <!--  <div class="footer">
+	            <div class="footer-socials no-bottom">
+	                <a href="#" class="scale-hover facebook-color"><i class="fa fa-facebook"></i></a>
+	                <a href="#" class="scale-hover twitter-color"><i class="fa fa-twitter"></i></a>
+	                <a href="#" class="scale-hover google-color"><i class="fa fa-google-plus"></i></a>
+	                <a href="#" class="scale-hover phone-color"><i class="fa fa-phone"></i></a>
+	                <a href="#" class="scale-hover mail-color show-share-bottom"><i class="fa fa-refresh"></i></a>
+	                <a href="#" class="scale-hover bg-night-dark back-to-top"><i class="fa fa-angle-up"></i></a>
+	                <div class="clear"></div>
+	            </div>
+	            <p class="footer-strip">Copyright <span id="copyright-year"></span> Enabled. All Rights Reserved</p>
+	        </div> -->
+	        
+	        <input type="hidden" id="LOGIN_FAIL_FLAG" name="LOGIN_FAIL_FLAG" value="${LOGIN_FAIL_FLAG}"/>
+		</form>
+		
+	 <script>
+	 $(document).ready(function(){
+		 if($("#LOGIN_FAIL_FLAG").val() == "E_DIFF_PWD") {
+			 alert("비밀번호 오류!");
+			 return;
+		 }
+		 
+	 });
+	 
+	 function loginAction(){
+		 var varFrom = $("#loginForm");
+		 varFrom.submit(); 
+	 }
+	 
+	 </script>	
+     </body>
+</html>
